@@ -61,4 +61,4 @@ jobs:
           app-name: 'zigmobile'
           slot-name: 'test'
           package: .
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_F5CB8B27972E40A09AC4375FC3C97A5A }}
+          publish-profile: ${{ secrets.AZURE_PUBLISH_PROFILE }}
