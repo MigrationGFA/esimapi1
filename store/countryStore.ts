@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';
 import { getCountries, getTopDestinations } from '@/services/country.service';
-import { getRegions } from '@/services/test/esim.service.test';
+import { getRegions } from '@/services/esim.service';
 
 import { CountryData, DestinationData, RegionData } from '@/services/country.service';
 

@@ -1,7 +1,7 @@
 // src/store/esimStore.ts
 import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';
-import esimService from '@/services/test/esim.service.test';
+import esimService from '@/services/esim.service';
 import {
     ESIMDataPlan,
     ESIMDataHistory,
@@ -61,98 +61,6 @@ export const useESIMStore = create<ESIMStore>()(
     devtools(
         (set, get) => ({
             ...initialState,
-
-            // fetchRegions: async () => {
-            //     set((state) => ({
-            //         loading: { ...state.loading, regions: true },
-            //         error: { ...state.error, regions: null },
-            //     }));
-
-            //     try {
-            //         const regions = await esimService.getRegions();
-            //         set((state) => ({
-            //             regions,
-            //             loading: { ...state.loading, regions: false },
-            //         }));
-            //         return regions;
-            //     } catch (error) {
-            //         const errorMessage = error instanceof Error ? error.message : 'Failed to fetch regions';
-            //         set((state) => ({
-            //             loading: { ...state.loading, regions: false },
-            //             error: { ...state.error, regions: errorMessage },
-            //         }));
-            //         throw error;
-            //     }
-            // },
-
-            // fetchProducts: async (params?: ProductsQueryParams) => {
-            //     set((state) => ({
-            //         loading: { ...state.loading, products: true },
-            //         error: { ...state.error, products: null },
-            //     }));
-
-            //     try {
-            //         const products = await esimService.getProducts(params);
-            //         set((state) => ({
-            //             products,
-            //             loading: { ...state.loading, products: false },
-            //         }));
-            //         return products;
-            //     } catch (error) {
-            //         const errorMessage = error instanceof Error ? error.message : 'Failed to fetch products';
-            //         set((state) => ({
-            //             loading: { ...state.loading, products: false },
-            //             error: { ...state.error, products: errorMessage },
-            //         }));
-            //         throw error;
-            //     }
-            // },
-
-            // fetchProductsByValidity: async (params?: ProductsByValidityQueryParams) => {
-            //     set((state) => ({
-            //         loading: { ...state.loading, products: true },
-            //         error: { ...state.error, products: null },
-            //     }));
-
-            //     try {
-            //         const products = await esimService.getProductsByValidity(params);
-            //         set((state) => ({
-            //             products,
-            //             loading: { ...state.loading, products: false },
-            //         }));
-            //         return products;
-            //     } catch (error) {
-            //         const errorMessage = error instanceof Error ? error.message : 'Failed to fetch products by validity';
-            //         set((state) => ({
-            //             loading: { ...state.loading, products: false },
-            //             error: { ...state.error, products: errorMessage },
-            //         }));
-            //         throw error;
-            //     }
-            // },
-
-            // fetchProductDetails: async (productUID: string) => {
-            //     set((state) => ({
-            //         loading: { ...state.loading, productDetails: true },
-            //         error: { ...state.error, productDetails: null },
-            //     }));
-
-            //     try {
-            //         const product = await esimService.getProductDetails(productUID);
-            //         set((state) => ({
-            //             selectedProduct: product,
-            //             loading: { ...state.loading, productDetails: false },
-            //         }));
-            //         return product;
-            //     } catch (error) {
-            //         const errorMessage = error instanceof Error ? error.message : 'Failed to fetch product details';
-            //         set((state) => ({
-            //             loading: { ...state.loading, productDetails: false },
-            //             error: { ...state.error, productDetails: errorMessage },
-            //         }));
-            //         throw error;
-            //     }
-            // },
 
             fetchEsimService: async (emailAddress: string) => {
                 set((state) => ({

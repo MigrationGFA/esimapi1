@@ -250,7 +250,7 @@ import { RegisterSchema } from "@/schema";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useAuthStore } from "@/store/authstore";
-import { ApiError } from "@/services/test/api.test";
+import { ApiError } from "@/test/api.test";
 
 // Define the type for form values
 type RegisterFormValues = z.infer<typeof RegisterSchema>;

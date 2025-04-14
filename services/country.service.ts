@@ -1,10 +1,13 @@
+// country.service.ts
 import api from "./api";
 import axios from "axios";
 
-export interface ApiResponse<T> {
+// Align with the new API response structure from api.ts
+export interface ApiResponse<T = any> {
   data: T;
-  status: string;
+  success: boolean;
   message?: string;
+  statusCode: number;
 }
 
 export interface CountryData {
@@ -31,20 +34,17 @@ export interface RegionData {
 // Generic error handler function
 const handleApiError = (error: unknown, context: string): never => {
   if (axios.isAxiosError(error)) {
-    const statusCode = error.response?.status || 0; // Default to 0 if undefined
+    const statusCode = error.response?.status || 0;
     const errorMessage = error.response?.data?.message || error.message;
 
     console.error(`API error ${context} (${statusCode}):`, errorMessage);
 
     // Customize error handling based on status codes
     if (statusCode === 401) {
-      // Handle unauthorized
       console.error("Authentication required");
     } else if (statusCode === 404) {
-      // Handle not found
       console.error("Resource not found");
     } else if (statusCode >= 500) {
-      // Handle server errors
       console.error("Server error occurred");
     }
   } else {
@@ -70,7 +70,7 @@ const setCachedData = <T>(key: string, data: T): void => {
   cache.set(key, { data, timestamp: Date.now() });
 };
 
-// API functions with caching
+// Updated API functions to align with new response structure
 export const getCountries = async (): Promise<CountryData[]> => {
   const cacheKey = 'countries';
   const cachedData = getCachedData<CountryData[]>(cacheKey);
@@ -78,8 +78,9 @@ export const getCountries = async (): Promise<CountryData[]> => {
   if (cachedData) return cachedData;
 
   try {
-    const response = await api.get<ApiResponse<CountryData[]>>("/country");
-    const data = response.data.data;
+    // Using the new response structure
+    const response = await api.get<CountryData[]>("/country");
+    const data = response.data;
     setCachedData(cacheKey, data);
     return data;
   } catch (error) {
@@ -94,12 +95,12 @@ export const getTopDestinations = async (): Promise<DestinationData[]> => {
   if (cachedData) return cachedData;
 
   try {
-    const response = await api.get<ApiResponse<DestinationData[]>>("/top-destinations");
-    const data = response.data.data;
+    // Using the new response structure
+    const response = await api.get<DestinationData[]>("/top-destinations");
+    const data = response.data;
     setCachedData(cacheKey, data);
     return data;
   } catch (error) {
     return handleApiError(error, "fetching top destinations");
   }
 };
-

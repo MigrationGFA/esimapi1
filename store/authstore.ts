@@ -12,7 +12,7 @@ import {
 } from "@/services/auth.service";
 import { getCustomer } from "@/services/customer.service";
 import { getAccessToken } from "@/utils/tokenStorage";
-import { ApiResponse } from "../services/test/api.test";
+import { ApiResponse } from "../test/api.test";
 
 interface Customer {
   userId: number;
@@ -81,7 +81,13 @@ export const useAuthStore = create<AuthState>()(
         try {
           set({ loading: true });
           const response = await getCustomer(emailAddress);
-          const customerData = response.data;
+          console.log(response)
+          if (!response) {
+            throw new Error("Customer data is undefined");
+          }
+          const customerData = response;
+          console.log(customerData)
+          
           set({ customer: customerData, loading: false });
           return customerData;
         } catch (error) {

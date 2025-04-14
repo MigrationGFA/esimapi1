@@ -19,7 +19,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useAuthStore } from "@/store/authstore";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { ApiError } from "@/services/test/api.test";
+import { ApiError } from "@/test/api.test";
 
 // Extract the inferred type
 type LoginFormValues = z.infer<typeof LoginSchema>;

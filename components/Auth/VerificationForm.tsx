@@ -150,7 +150,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Form } from "@/components/ui/form";
 import OtpInput from "../ui/otp";
 import { useAuthStore } from "@/store/authstore"; 
-import { ApiError } from "@/services/test/api.test";
+import { ApiError } from "@/test/api.test";
 
 // Schema for OTP verification
 const VerificationSchema = z.object({

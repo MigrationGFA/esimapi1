@@ -20,19 +20,12 @@ export default function Profile() {
             </h3>
             <div className="rounded-lg divide-y ">
               <Link
-                href="/update-password"
+                href=""
                 className="flex items-center justify-between py-4 hover:bg-gray-50 transition-colors text-xl"
               >
                 <span>Update Password</span>
                 <ChevronRight className="h-5 w-5 text-gray-400" />
               </Link>
-              {/* <Link
-                href="/delete-account"
-                className="flex items-center justify-between py-4 hover:bg-gray-50 transition-colors text-xl"
-              >
-                <span className="text-red-500">Delete Account</span>
-                <ChevronRight className="h-5 w-5 text-gray-400" />
-              </Link> */}
             </div>
           </div>
           {/* Help & Feedback Section */}
@@ -42,21 +35,22 @@ export default function Profile() {
             </h3>
             <div className="rounded-lg divide-y ">
               <Link
-                href="/faqs"
+                href="/dashboard/profile/faqs"
                 className="flex items-center justify-between py-4 hover:bg-gray-50 transition-colors text-xl"
               >
                 <span>FAQs</span>
                 <ChevronRight className="h-5 w-5 text-gray-400" />
               </Link>
               <Link
-                href="/privacy-policy"
+                href=""
+                aria-disabled
                 className="flex items-center justify-between py-4 hover:bg-gray-50 transition-colors text-xl"
               >
                 <span>Privacy Policy</span>
                 <ChevronRight className="h-5 w-5 text-gray-400" />
               </Link>
               <Link
-                href="/terms-of-service"
+                href=""
                 className="flex items-center justify-between py-4 hover:bg-gray-50 transition-colors text-xl"
               >
                 <span>Terms of Service</span>
