@@ -10,6 +10,12 @@ on:
   workflow_dispatch:
 
 jobs:
+  cache:
+    key: ${CI_COMMIT_REF_SLUG}
+    paths:
+    - node_modules/
+    - .next/cache/
+    
   build:
     runs-on: ubuntu-latest
     permissions:
